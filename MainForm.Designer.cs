@@ -14,9 +14,11 @@
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
+
+            if (_httpClient != null)
+                _httpClient.Dispose();
+
             base.Dispose(disposing);
         }
 

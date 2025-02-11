@@ -1,6 +1,5 @@
 ﻿namespace NiichanWordCloudGenerator.Models
 {
-
     public class NiichanResponse
     {
         public Post[]? posts { get; set; }

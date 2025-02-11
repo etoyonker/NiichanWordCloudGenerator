@@ -68,30 +68,36 @@ namespace NiichanWordCloudGenerator
 
         private bool BoardNameTextBoxValidation()
         {
-            var IsStringEmpty = string.IsNullOrWhiteSpace(boardNameTextBox.Text);
+            var isStringEmpty = string.IsNullOrWhiteSpace(boardNameTextBox.Text);
+            var isStringInvalidBoardName = isStringEmpty || IsStringInvalidBoardName(boardNameTextBox.Text);
 
-            errorProvider1.SetError(
-                boardNameTextBox,
-                IsStringEmpty ? "Поле обязательно для заполнения" : null);
+            if (isStringEmpty)
+                errorProvider1.SetError(boardNameTextBox, "Поле обязательно для заполнения");
+            else if (isStringInvalidBoardName)
+                errorProvider1.SetError(boardNameTextBox, "Допускаются только буквы и числа");
+            else
+                errorProvider1.SetError(boardNameTextBox, null);
 
-            return IsStringEmpty;
+            return isStringInvalidBoardName;
         }
 
         private bool ThreadNumTextBoxValidation()
         {
             var isStringEmpty = string.IsNullOrWhiteSpace(threadNumTextBox.Text);
-            var isStringContainsNaN = isStringEmpty || IsStringContainsNaN(threadNumTextBox.Text);
+            var isStringInvalidNumber = isStringEmpty || IsStringInvalidNumber(threadNumTextBox.Text);
 
             if (isStringEmpty)
                 errorProvider1.SetError(threadNumTextBox, "Поле обязательно для заполнения");
-            else if (isStringContainsNaN)
-                errorProvider1.SetError(threadNumTextBox, "Введите только числа");
+            else if (isStringInvalidNumber)
+                errorProvider1.SetError(threadNumTextBox, "Допускаются только числа");
             else
                 errorProvider1.SetError(threadNumTextBox, null);
 
-            return isStringContainsNaN;
+            return isStringInvalidNumber;
         }
 
-        private static bool IsStringContainsNaN(string text) => text.Any(e => !char.IsNumber(e));
+        private static bool IsStringInvalidBoardName(string text) => text.Any(e => !char.IsLetterOrDigit(e));
+
+        private static bool IsStringInvalidNumber(string text) => text.Any(e => !char.IsDigit(e));
     }
 }

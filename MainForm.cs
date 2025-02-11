@@ -3,11 +3,11 @@ using System.Net.Http.Json;
 
 namespace NiichanWordCloudGenerator
 {
-    internal partial class MainForm : Form
+    public partial class MainForm : Form
     {
         private readonly HttpClient _httpClient;
 
-        internal MainForm()
+        public MainForm()
         {
             InitializeComponent();
 

@@ -133,10 +133,5 @@ namespace NiichanWordCloudGenerator
         private static bool IsStringInvalidBoardName(string text) => text.Any(e => !char.IsLetterOrDigit(e));
 
         private static bool IsStringInvalidNumber(string text) => text.Any(e => !char.IsDigit(e));
-
-        private void mainFlowLayoutPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

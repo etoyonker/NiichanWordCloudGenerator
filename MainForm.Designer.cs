@@ -83,7 +83,6 @@
             mainFlowLayoutPanel.Padding = new Padding(8);
             mainFlowLayoutPanel.Size = new Size(164, 433);
             mainFlowLayoutPanel.TabIndex = 0;
-            mainFlowLayoutPanel.Paint += mainFlowLayoutPanel_Paint;
             // 
             // mainBoardLabel
             // 
